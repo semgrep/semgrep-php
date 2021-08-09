@@ -1,0 +1,32 @@
+File: semgrep-grammars/src/tree-sitter-php/LICENSE
+Git repo name: tree-sitter-php
+Latest commit in repo: 9f2586b1be335449181547ca51badb44c97c38b4
+Last change in file:
+  commit 026a06f28d1bc3bcab7712ca62b317104f7f721d
+  Author: Max Brunsfeld <maxbrunsfeld@gmail.com>
+  Date:   Tue Jul 21 09:49:24 2020 -0700
+  
+      Add license
+---
+File: semgrep-grammars/src/tree-sitter-php/grammar.js
+Git repo name: tree-sitter-php
+Latest commit in repo: 9f2586b1be335449181547ca51badb44c97c38b4
+Last change in file:
+  commit a9714abbc40ca5bf7daff09d4fae8e46c3ca9b25
+  Author: Sjoerd Langkemper <sjoerd-github@linuxonly.nl>
+  Date:   Sun Aug 1 13:01:02 2021 +0200
+  
+      Fix precedence between concatenation and shift
+      
+      Closes #93.
+---
+File: semgrep-grammars/src/semgrep-php/grammar.js
+Git repo name: ocaml-tree-sitter-semgrep
+Latest commit in repo: dfdc3f32aedb879b16c9f8fedcf9f250ed002142
+Last change in file:
+  commit dfdc3f32aedb879b16c9f8fedcf9f250ed002142
+  Author: pad <yoann.padioleau@gmail.com>
+  Date:   Mon Aug 9 12:06:52 2021 +0200
+  
+      Adding tree-sitter-php
+---
