@@ -259,9 +259,15 @@ type anon_choice_COLON_5102e09 = [
 type integer = Token.t
 [@@deriving sexp_of]
 
+type final_modifier = pat_5d839fb
+[@@deriving sexp_of]
+
 type text =
-  [ `LT of Token.t (* < *) | `Pat_b91d208 of pat_b91d208 (*tok*) ]
+  [ `LT of Token.t (* < *) | `Pat_b91d208 of pat_b91d208 ]
     list (* one or more *)
+[@@deriving sexp_of]
+
+type abstract_modifier = pat_246e68b
 [@@deriving sexp_of]
 
 type namespace_name = (
@@ -276,13 +282,13 @@ type named_label_statement = (name (*tok*) * Token.t (* ":" *))
 type variable_name = (Token.t (* "$" *) * name (*tok*))
 [@@deriving sexp_of]
 
-type namespace_aliasing_clause = (pat_79b8891 (*tok*) * name (*tok*))
+type namespace_aliasing_clause = (pat_79b8891 * name (*tok*))
 [@@deriving sexp_of]
 
 type visibility_modifier = [
-    `Pat_a9304a9 of pat_a9304a9 (*tok*)
-  | `Pat_954cb76 of pat_954cb76 (*tok*)
-  | `Pat_1206b1e of pat_1206b1e (*tok*)
+    `Pat_a9304a9 of pat_a9304a9
+  | `Pat_954cb76 of pat_954cb76
+  | `Pat_1206b1e of pat_1206b1e
 ]
 [@@deriving sexp_of]
 
@@ -290,8 +296,8 @@ type string__ = [ `Str of string_ (*tok*) | `Here of heredoc (*tok*) ]
 [@@deriving sexp_of]
 
 type anon_choice_pat_174c3a5_81b85de = [
-    `Pat_174c3a5 of pat_174c3a5 (*tok*)
-  | `Pat_7beed81 of pat_7beed81 (*tok*)
+    `Pat_174c3a5 of pat_174c3a5
+  | `Pat_7beed81 of pat_7beed81
 ]
 [@@deriving sexp_of]
 
@@ -301,6 +307,9 @@ type semicolon = [
 ]
 [@@deriving sexp_of]
 
+type static_modifier = pat_068a1b3
+[@@deriving sexp_of]
+
 type namespace_name_as_prefix = [
     `BSLASH of Token.t (* "\\" *)
   | `Opt_BSLASH_name_name_BSLASH of (
@@ -308,9 +317,9 @@ type namespace_name_as_prefix = [
       * namespace_name
       * Token.t (* "\\" *)
     )
-  | `Pat_1e9d49b_BSLASH of (pat_1e9d49b (*tok*) * Token.t (* "\\" *))
+  | `Pat_1e9d49b_BSLASH of (pat_1e9d49b * Token.t (* "\\" *))
   | `Pat_1e9d49b_opt_BSLASH_name_name_BSLASH of (
-        pat_1e9d49b (*tok*)
+        pat_1e9d49b
       * Token.t (* "\\" *) option
       * namespace_name
       * Token.t (* "\\" *)
@@ -319,7 +328,7 @@ type namespace_name_as_prefix = [
 [@@deriving sexp_of]
 
 type anonymous_function_use_clause = (
-    pat_30717f3 (*tok*)
+    pat_30717f3
   * Token.t (* "(" *)
   * Token.t (* "&" *) option
   * variable_name
@@ -349,23 +358,23 @@ type namespace_use_group_clause = (
 type modifier = [
     `Var_modi of var_modifier (*tok*)
   | `Visi_modi of visibility_modifier
-  | `Static_modi of pat_068a1b3 (*tok*)
-  | `Final_modi of pat_5d839fb (*tok*)
-  | `Abst_modi of pat_246e68b (*tok*)
+  | `Static_modi of static_modifier
+  | `Final_modi of final_modifier
+  | `Abst_modi of abstract_modifier
 ]
 [@@deriving sexp_of]
 
 type relative_scope = [
     `Self of Token.t (* "self" *)
   | `Parent of Token.t (* "parent" *)
-  | `Pat_068a1b3 of pat_068a1b3 (*tok*)
+  | `Pat_068a1b3 of static_modifier
 ]
 [@@deriving sexp_of]
 
 type reserved_identifier = [
     `Self of Token.t (* "self" *)
   | `Parent of Token.t (* "parent" *)
-  | `Pat_068a1b3 of pat_068a1b3 (*tok*)
+  | `Pat_068a1b3 of static_modifier
 ]
 [@@deriving sexp_of]
 
@@ -414,14 +423,14 @@ type type_list = (
 [@@deriving sexp_of]
 
 type base_clause = (
-    pat_862500c (*tok*)
+    pat_862500c
   * anon_choice_name_062e4f2
   * (Token.t (* "," *) * anon_choice_name_062e4f2) list (* zero or more *)
 )
 [@@deriving sexp_of]
 
 type class_interface_clause = (
-    pat_e6ddd3d (*tok*)
+    pat_e6ddd3d
   * anon_choice_name_062e4f2
   * (Token.t (* "," *) * anon_choice_name_062e4f2) list (* zero or more *)
 )
@@ -467,13 +476,13 @@ and anon_choice_array_dest_08f4c18 = [
 
 and anon_choice_case_stmt_f1b35bc = [
     `Case_stmt of (
-        pat_e8f6be6 (*tok*)
+        pat_e8f6be6
       * expression
       * anon_choice_COLON_5102e09
       * statement list (* zero or more *)
     )
   | `Defa_stmt of (
-        pat_1b8b911 (*tok*)
+        pat_1b8b911
       * anon_choice_COLON_5102e09
       * statement list (* zero or more *)
     )
@@ -507,9 +516,7 @@ and anon_choice_match_cond_exp_d891119 = [
     `Match_cond_exp of (
         match_condition_list * Token.t (* "=>" *) * expression
     )
-  | `Match_defa_exp of (
-        pat_1b8b911 (*tok*) * Token.t (* "=>" *) * expression
-    )
+  | `Match_defa_exp of (pat_1b8b911 * Token.t (* "=>" *) * expression)
 ]
 
 and anon_choice_simple_param_5af5eb3 = [
@@ -596,12 +603,12 @@ and attribute_list =
 
 and binary_expression = [
     `Un_exp_pat_d58874b_choice_qual_name of (
-        unary_expression * pat_d58874b (*tok*) * class_type_designator
+        unary_expression * pat_d58874b * class_type_designator
     )
   | `Exp_QMARKQMARK_exp of (expression * Token.t (* "??" *) * expression)
-  | `Exp_pat_e0610ac_exp of (expression * pat_e0610ac (*tok*) * expression)
-  | `Exp_pat_48a4c46_exp of (expression * pat_48a4c46 (*tok*) * expression)
-  | `Exp_pat_f398476_exp of (expression * pat_f398476 (*tok*) * expression)
+  | `Exp_pat_e0610ac_exp of (expression * pat_e0610ac * expression)
+  | `Exp_pat_48a4c46_exp of (expression * pat_48a4c46 * expression)
+  | `Exp_pat_f398476_exp of (expression * pat_f398476 * expression)
   | `Exp_BARBAR_exp of (expression * Token.t (* "||" *) * expression)
   | `Exp_AMPAMP_exp of (expression * Token.t (* "&&" *) * expression)
   | `Exp_BAR_exp of (expression * Token.t (* "|" *) * expression)
@@ -661,7 +668,7 @@ and callable_variable = [
 ]
 
 and catch_clause = (
-    pat_4df3136 (*tok*)
+    pat_4df3136
   * Token.t (* "(" *)
   * type_list
   * variable_name option
@@ -699,7 +706,7 @@ and const_declaration = const_declaration_
 
 and const_declaration_ = (
     visibility_modifier option
-  * pat_7beed81 (*tok*)
+  * pat_7beed81
   * const_element
   * (Token.t (* "," *) * const_element) list (* zero or more *)
   * semicolon
@@ -734,17 +741,13 @@ and dynamic_variable_name = [
     )
 ]
 
-and else_clause = (pat_b4abcb1 (*tok*) * statement)
+and else_clause = (pat_b4abcb1 * statement)
 
-and else_clause_2 = (pat_b4abcb1 (*tok*) * colon_block)
+and else_clause_2 = (pat_b4abcb1 * colon_block)
 
-and else_if_clause = (
-    pat_66accd2 (*tok*) * parenthesized_expression * statement
-)
+and else_if_clause = (pat_66accd2 * parenthesized_expression * statement)
 
-and else_if_clause_2 = (
-    pat_66accd2 (*tok*) * parenthesized_expression * colon_block
-)
+and else_if_clause_2 = (pat_66accd2 * parenthesized_expression * colon_block)
 
 and enum_declaration_list = (
     Token.t (* "{" *)
@@ -786,9 +789,7 @@ and expression = [
       * Token.t (* ":" *)
       * expression
     )
-  | `Match_exp of (
-        pat_7f9f785 (*tok*) * parenthesized_expression * match_block
-    )
+  | `Match_exp of (pat_7f9f785 * parenthesized_expression * match_block)
   | `Augm_assign_exp of (
         variable
       * [
@@ -824,15 +825,15 @@ and expression = [
     )
   | `Un_exp of unary_expression
   | `Bin_exp of binary_expression
-  | `Incl_exp of (pat_5295da4 (*tok*) * expression)
-  | `Incl_once_exp of (pat_8b02371 (*tok*) * expression)
-  | `Requ_exp of (pat_35b755d (*tok*) * expression)
-  | `Requ_once_exp of (pat_feb296c (*tok*) * expression)
+  | `Incl_exp of (pat_5295da4 * expression)
+  | `Incl_once_exp of (pat_8b02371 * expression)
+  | `Requ_exp of (pat_35b755d * expression)
+  | `Requ_once_exp of (pat_feb296c * expression)
 ]
 
 and expressions = [ `Exp of expression | `Seq_exp of sequence_expression ]
 
-and finally_clause = (pat_f039c98 (*tok*) * compound_statement)
+and finally_clause = (pat_f039c98 * compound_statement)
 
 and foreach_pair = (expression * Token.t (* "=>" *) * foreach_value)
 
@@ -854,7 +855,7 @@ and formal_parameters = (
 )
 
 and function_definition_header = (
-    pat_174c3a5 (*tok*)
+    pat_174c3a5
   * Token.t (* "&" *) option
   * anon_choice_name_9dd129a
   * formal_parameters
@@ -896,7 +897,7 @@ and member_access_expression = (
 and member_declaration = [
     `Class_const_decl of (
         attribute_list option
-      * pat_5d839fb (*tok*) option
+      * final_modifier option
       * const_declaration
     )
   | `Prop_decl of (
@@ -939,7 +940,7 @@ and object_creation_expression = [
     )
   | `New_pat_a7a1629_opt_args_opt_base_clause_opt_class_inte_clause_decl_list of (
         Token.t (* "new" *)
-      * pat_a7a1629 (*tok*)
+      * pat_a7a1629
       * arguments option
       * base_clause option
       * class_interface_clause option
@@ -960,8 +961,8 @@ and primary_expression = [
   | `Array_crea_exp of array_creation_expression
   | `Print_intr of (Token.t (* "print" *) * expression)
   | `Anon_func_crea_exp of (
-        pat_068a1b3 (*tok*) option
-      * pat_174c3a5 (*tok*)
+        static_modifier option
+      * pat_174c3a5
       * Token.t (* "&" *) option
       * formal_parameters
       * anonymous_function_use_clause option
@@ -969,8 +970,8 @@ and primary_expression = [
       * compound_statement
     )
   | `Arrow_func of (
-        pat_068a1b3 (*tok*) option
-      * pat_fb2c292 (*tok*)
+        static_modifier option
+      * pat_fb2c292
       * Token.t (* "&" *) option
       * formal_parameters
       * return_type option
@@ -981,7 +982,7 @@ and primary_expression = [
   | `Update_exp of update_expression
   | `Shell_cmd_exp of shell_command_expression (*tok*)
   | `Paren_exp of parenthesized_expression
-  | `Throw_exp of (pat_6533f64 (*tok*) * expression)
+  | `Throw_exp of (pat_6533f64 * expression)
 ]
 
 and property_element = (variable_name * property_initializer option)
@@ -1012,7 +1013,7 @@ and statement = [
   | `Named_label_stmt of named_label_statement
   | `Exp_stmt of (expression * semicolon)
   | `If_stmt of (
-        pat_da2756d (*tok*)
+        pat_da2756d
       * parenthesized_expression
       * [
             `Choice_empty_stmt_rep_else_if_clause_opt_else_clause of (
@@ -1024,30 +1025,28 @@ and statement = [
                 colon_block
               * else_if_clause_2 list (* zero or more *)
               * else_clause_2 option
-              * pat_b10beb6 (*tok*)
+              * pat_b10beb6
               * semicolon
             )
         ]
     )
-  | `Switch_stmt of (
-        pat_dad77c5 (*tok*) * parenthesized_expression * switch_block
-    )
+  | `Switch_stmt of (pat_dad77c5 * parenthesized_expression * switch_block)
   | `While_stmt of (
-        pat_1137973 (*tok*)
+        pat_1137973
       * parenthesized_expression
       * [
             `Choice_empty_stmt of statement
           | `Colon_blk_pat_2bdb730_choice_auto_semi of (
-                colon_block * pat_2bdb730 (*tok*) * semicolon
+                colon_block * pat_2bdb730 * semicolon
             )
         ]
     )
   | `Do_stmt of (
-        pat_4297c98 (*tok*) * statement * pat_1137973 (*tok*)
-      * parenthesized_expression * semicolon
+        pat_4297c98 * statement * pat_1137973 * parenthesized_expression
+      * semicolon
     )
   | `For_stmt of (
-        pat_8ae5cef (*tok*)
+        pat_8ae5cef
       * Token.t (* "(" *)
       * expressions option
       * Token.t (* ";" *)
@@ -1061,32 +1060,32 @@ and statement = [
           | `COLON_rep_choice_empty_stmt_pat_1d5f5b3_choice_auto_semi of (
                 Token.t (* ":" *)
               * statement list (* zero or more *)
-              * pat_1d5f5b3 (*tok*)
+              * pat_1d5f5b3
               * semicolon
             )
         ]
     )
   | `Fore_stmt of (
-        pat_de4334b (*tok*)
+        pat_de4334b
       * Token.t (* "(" *)
       * expression
-      * pat_79b8891 (*tok*)
+      * pat_79b8891
       * [ `Fore_pair of foreach_pair | `Choice_opt_AMP_exp of foreach_value ]
       * Token.t (* ")" *)
       * [
             `Choice_auto_semi of semicolon
           | `Choice_empty_stmt of statement
           | `Colon_blk_pat_25e0188_choice_auto_semi of (
-                colon_block * pat_25e0188 (*tok*) * semicolon
+                colon_block * pat_25e0188 * semicolon
             )
         ]
     )
-  | `Goto_stmt of (pat_7f63d6a (*tok*) * name (*tok*) * semicolon)
-  | `Cont_stmt of (pat_ad43c45 (*tok*) * expression option * semicolon)
-  | `Brk_stmt of (pat_dd36a63 (*tok*) * expression option * semicolon)
-  | `Ret_stmt of (pat_2539e50 (*tok*) * expression option * semicolon)
+  | `Goto_stmt of (pat_7f63d6a * name (*tok*) * semicolon)
+  | `Cont_stmt of (pat_ad43c45 * expression option * semicolon)
+  | `Brk_stmt of (pat_dd36a63 * expression option * semicolon)
+  | `Ret_stmt of (pat_2539e50 * expression option * semicolon)
   | `Try_stmt of (
-        pat_ba29bfc (*tok*)
+        pat_ba29bfc
       * compound_statement
       * [ `Catch_clause of catch_clause | `Fina_clause of finally_clause ]
           list (* one or more *)
@@ -1101,13 +1100,13 @@ and statement = [
           | `COLON_rep_choice_empty_stmt_pat_bb9603f_choice_auto_semi of (
                 Token.t (* ":" *)
               * statement list (* zero or more *)
-              * pat_bb9603f (*tok*)
+              * pat_bb9603f
               * semicolon
             )
           | `Choice_auto_semi of semicolon
         ]
     )
-  | `Echo_stmt of (pat_40e76f1 (*tok*) * expressions * semicolon)
+  | `Echo_stmt of (pat_40e76f1 * expressions * semicolon)
   | `Unset_stmt of (
         Token.t (* "unset" *)
       * Token.t (* "(" *)
@@ -1124,12 +1123,9 @@ and statement = [
     )
   | `Class_decl of (
         attribute_list option
-      * [
-            `Final_modi of pat_5d839fb (*tok*)
-          | `Abst_modi of pat_246e68b (*tok*)
-        ]
+      * [ `Final_modi of final_modifier | `Abst_modi of abstract_modifier ]
           option
-      * pat_a7a1629 (*tok*)
+      * pat_a7a1629
       * name (*tok*)
       * base_clause option
       * class_interface_clause option
@@ -1137,22 +1133,22 @@ and statement = [
       * semicolon option
     )
   | `Inte_decl of (
-        pat_1f94420 (*tok*)
+        pat_1f94420
       * name (*tok*)
       * base_clause option
       * declaration_list
     )
-  | `Trait_decl of (pat_3e83199 (*tok*) * name (*tok*) * declaration_list)
+  | `Trait_decl of (pat_3e83199 * name (*tok*) * declaration_list)
   | `Enum_decl of (
         attribute_list option
-      * pat_21a3b9e (*tok*)
+      * pat_21a3b9e
       * name (*tok*)
       * return_type option
       * class_interface_clause option
       * enum_declaration_list
     )
   | `Name_defi of (
-        pat_1e9d49b (*tok*)
+        pat_1e9d49b
       * [
             `Name_name_choice_auto_semi of (namespace_name * semicolon)
           | `Opt_name_name_comp_stmt of (
@@ -1162,7 +1158,7 @@ and statement = [
         ]
     )
   | `Name_use_decl of (
-        pat_30717f3 (*tok*)
+        pat_30717f3
       * anon_choice_pat_174c3a5_81b85de option
       * [
             `Name_use_clause_rep_COMMA_name_use_clause of (
@@ -1180,13 +1176,13 @@ and statement = [
       * semicolon
     )
   | `Global_decl of (
-        pat_f5e99ef (*tok*)
+        pat_f5e99ef
       * variable_name_
       * (Token.t (* "," *) * variable_name_) list (* zero or more *)
       * semicolon
     )
   | `Func_static_decl of (
-        pat_068a1b3 (*tok*)
+        static_modifier
       * static_variable_declaration
       * (Token.t (* "," *) * static_variable_declaration)
           list (* zero or more *)
@@ -1222,7 +1218,7 @@ and switch_block = [
   | `COLON_rep_choice_case_stmt_pat_0b47e00_choice_auto_semi of (
         Token.t (* ":" *)
       * anon_choice_case_stmt_f1b35bc list (* zero or more *)
-      * pat_0b47e00 (*tok*)
+      * pat_0b47e00
       * semicolon
     )
 ]
@@ -1259,7 +1255,7 @@ and update_expression = [
 
 and use_as_clause = (
     anon_choice_class_cst_access_exp_18f5288
-  * pat_79b8891 (*tok*)
+  * pat_79b8891
   * [
         `Opt_visi_modi_name of (visibility_modifier option * name (*tok*))
       | `Visi_modi_opt_name of (visibility_modifier * name (*tok*) option)
@@ -1267,15 +1263,14 @@ and use_as_clause = (
 )
 
 and use_declaration = (
-    pat_30717f3 (*tok*)
+    pat_30717f3
   * anon_choice_name_062e4f2
   * (Token.t (* "," *) * anon_choice_name_062e4f2) list (* zero or more *)
   * [ `Use_list of use_list | `Choice_auto_semi of semicolon ]
 )
 
 and use_instead_of_clause = (
-    anon_choice_class_cst_access_exp_18f5288 * pat_5641180 (*tok*)
-  * name (*tok*)
+    anon_choice_class_cst_access_exp_18f5288 * pat_5641180 * name (*tok*)
 )
 
 and use_list = (
@@ -1321,15 +1316,6 @@ type empty_statement (* inlined *) = Token.t (* ";" *)
 type comment (* inlined *) = Token.t
 [@@deriving sexp_of]
 
-type final_modifier (* inlined *) = pat_5d839fb (*tok*)
-[@@deriving sexp_of]
-
-type abstract_modifier (* inlined *) = pat_246e68b (*tok*)
-[@@deriving sexp_of]
-
-type static_modifier (* inlined *) = pat_068a1b3 (*tok*)
-[@@deriving sexp_of]
-
 type text_interpolation (* inlined *) = (
     Token.t (* "?>" *)
   * text option
@@ -1337,9 +1323,7 @@ type text_interpolation (* inlined *) = (
 )
 [@@deriving sexp_of]
 
-type goto_statement (* inlined *) = (
-    pat_7f63d6a (*tok*) * name (*tok*) * semicolon
-)
+type goto_statement (* inlined *) = (pat_7f63d6a * name (*tok*) * semicolon)
 [@@deriving sexp_of]
 
 type optional_type (* inlined *) = (
@@ -1349,7 +1333,7 @@ type optional_type (* inlined *) = (
 [@@deriving sexp_of]
 
 type namespace_use_declaration (* inlined *) = (
-    pat_30717f3 (*tok*)
+    pat_30717f3
   * anon_choice_pat_174c3a5_81b85de option
   * [
         `Name_use_clause_rep_COMMA_name_use_clause of (
@@ -1369,8 +1353,8 @@ type namespace_use_declaration (* inlined *) = (
 [@@deriving sexp_of]
 
 type anonymous_function_creation_expression (* inlined *) = (
-    pat_068a1b3 (*tok*) option
-  * pat_174c3a5 (*tok*)
+    static_modifier option
+  * pat_174c3a5
   * Token.t (* "&" *) option
   * formal_parameters
   * anonymous_function_use_clause option
@@ -1380,8 +1364,8 @@ type anonymous_function_creation_expression (* inlined *) = (
 [@@deriving sexp_of]
 
 type arrow_function (* inlined *) = (
-    pat_068a1b3 (*tok*) option
-  * pat_fb2c292 (*tok*)
+    static_modifier option
+  * pat_fb2c292
   * Token.t (* "&" *) option
   * formal_parameters
   * return_type option
@@ -1420,14 +1404,14 @@ type augmented_assignment_expression (* inlined *) = (
 [@@deriving sexp_of]
 
 type break_statement (* inlined *) = (
-    pat_dd36a63 (*tok*)
+    pat_dd36a63
   * expression option
   * semicolon
 )
 [@@deriving sexp_of]
 
 type case_statement (* inlined *) = (
-    pat_e8f6be6 (*tok*)
+    pat_e8f6be6
   * expression
   * anon_choice_COLON_5102e09
   * statement list (* zero or more *)
@@ -1446,19 +1430,16 @@ type cast_variable (* inlined *) = (
 
 type class_const_declaration (* inlined *) = (
     attribute_list option
-  * pat_5d839fb (*tok*) option
+  * final_modifier option
   * const_declaration
 )
 [@@deriving sexp_of]
 
 type class_declaration (* inlined *) = (
     attribute_list option
-  * [
-        `Final_modi of pat_5d839fb (*tok*)
-      | `Abst_modi of pat_246e68b (*tok*)
-    ]
+  * [ `Final_modi of final_modifier | `Abst_modi of abstract_modifier ]
       option
-  * pat_a7a1629 (*tok*)
+  * pat_a7a1629
   * name (*tok*)
   * base_clause option
   * class_interface_clause option
@@ -1477,7 +1458,7 @@ type conditional_expression (* inlined *) = (
 [@@deriving sexp_of]
 
 type continue_statement (* inlined *) = (
-    pat_ad43c45 (*tok*)
+    pat_ad43c45
   * expression option
   * semicolon
 )
@@ -1493,7 +1474,7 @@ type declare_statement (* inlined *) = (
       | `COLON_rep_choice_empty_stmt_pat_bb9603f_choice_auto_semi of (
             Token.t (* ":" *)
           * statement list (* zero or more *)
-          * pat_bb9603f (*tok*)
+          * pat_bb9603f
           * semicolon
         )
       | `Choice_auto_semi of semicolon
@@ -1502,21 +1483,19 @@ type declare_statement (* inlined *) = (
 [@@deriving sexp_of]
 
 type default_statement (* inlined *) = (
-    pat_1b8b911 (*tok*)
+    pat_1b8b911
   * anon_choice_COLON_5102e09
   * statement list (* zero or more *)
 )
 [@@deriving sexp_of]
 
 type do_statement (* inlined *) = (
-    pat_4297c98 (*tok*) * statement * pat_1137973 (*tok*)
-  * parenthesized_expression * semicolon
+    pat_4297c98 * statement * pat_1137973 * parenthesized_expression
+  * semicolon
 )
 [@@deriving sexp_of]
 
-type echo_statement (* inlined *) = (
-    pat_40e76f1 (*tok*) * expressions * semicolon
-)
+type echo_statement (* inlined *) = (pat_40e76f1 * expressions * semicolon)
 [@@deriving sexp_of]
 
 type enum_case (* inlined *) = (
@@ -1534,7 +1513,7 @@ type enum_case (* inlined *) = (
 
 type enum_declaration (* inlined *) = (
     attribute_list option
-  * pat_21a3b9e (*tok*)
+  * pat_21a3b9e
   * name (*tok*)
   * return_type option
   * class_interface_clause option
@@ -1546,7 +1525,7 @@ type expression_statement (* inlined *) = (expression * semicolon)
 [@@deriving sexp_of]
 
 type for_statement (* inlined *) = (
-    pat_8ae5cef (*tok*)
+    pat_8ae5cef
   * Token.t (* "(" *)
   * expressions option
   * Token.t (* ";" *)
@@ -1560,7 +1539,7 @@ type for_statement (* inlined *) = (
       | `COLON_rep_choice_empty_stmt_pat_1d5f5b3_choice_auto_semi of (
             Token.t (* ":" *)
           * statement list (* zero or more *)
-          * pat_1d5f5b3 (*tok*)
+          * pat_1d5f5b3
           * semicolon
         )
     ]
@@ -1568,17 +1547,17 @@ type for_statement (* inlined *) = (
 [@@deriving sexp_of]
 
 type foreach_statement (* inlined *) = (
-    pat_de4334b (*tok*)
+    pat_de4334b
   * Token.t (* "(" *)
   * expression
-  * pat_79b8891 (*tok*)
+  * pat_79b8891
   * [ `Fore_pair of foreach_pair | `Choice_opt_AMP_exp of foreach_value ]
   * Token.t (* ")" *)
   * [
         `Choice_auto_semi of semicolon
       | `Choice_empty_stmt of statement
       | `Colon_blk_pat_25e0188_choice_auto_semi of (
-            colon_block * pat_25e0188 (*tok*) * semicolon
+            colon_block * pat_25e0188 * semicolon
         )
     ]
 )
@@ -1603,7 +1582,7 @@ type function_definition (* inlined *) = (
 [@@deriving sexp_of]
 
 type function_static_declaration (* inlined *) = (
-    pat_068a1b3 (*tok*)
+    static_modifier
   * static_variable_declaration
   * (Token.t (* "," *) * static_variable_declaration) list (* zero or more *)
   * semicolon
@@ -1611,7 +1590,7 @@ type function_static_declaration (* inlined *) = (
 [@@deriving sexp_of]
 
 type global_declaration (* inlined *) = (
-    pat_f5e99ef (*tok*)
+    pat_f5e99ef
   * variable_name_
   * (Token.t (* "," *) * variable_name_) list (* zero or more *)
   * semicolon
@@ -1619,7 +1598,7 @@ type global_declaration (* inlined *) = (
 [@@deriving sexp_of]
 
 type if_statement (* inlined *) = (
-    pat_da2756d (*tok*)
+    pat_da2756d
   * parenthesized_expression
   * [
         `Choice_empty_stmt_rep_else_if_clause_opt_else_clause of (
@@ -1631,23 +1610,21 @@ type if_statement (* inlined *) = (
             colon_block
           * else_if_clause_2 list (* zero or more *)
           * else_clause_2 option
-          * pat_b10beb6 (*tok*)
+          * pat_b10beb6
           * semicolon
         )
     ]
 )
 [@@deriving sexp_of]
 
-type include_expression (* inlined *) = (pat_5295da4 (*tok*) * expression)
+type include_expression (* inlined *) = (pat_5295da4 * expression)
 [@@deriving sexp_of]
 
-type include_once_expression (* inlined *) = (
-    pat_8b02371 (*tok*) * expression
-)
+type include_once_expression (* inlined *) = (pat_8b02371 * expression)
 [@@deriving sexp_of]
 
 type interface_declaration (* inlined *) = (
-    pat_1f94420 (*tok*)
+    pat_1f94420
   * name (*tok*)
   * base_clause option
   * declaration_list
@@ -1660,12 +1637,12 @@ type match_conditional_expression (* inlined *) = (
 [@@deriving sexp_of]
 
 type match_default_expression (* inlined *) = (
-    pat_1b8b911 (*tok*) * Token.t (* "=>" *) * expression
+    pat_1b8b911 * Token.t (* "=>" *) * expression
 )
 [@@deriving sexp_of]
 
 type match_expression (* inlined *) = (
-    pat_7f9f785 (*tok*) * parenthesized_expression * match_block
+    pat_7f9f785 * parenthesized_expression * match_block
 )
 [@@deriving sexp_of]
 
@@ -1675,7 +1652,7 @@ type member_call_expression (* inlined *) = (
 [@@deriving sexp_of]
 
 type namespace_definition (* inlined *) = (
-    pat_1e9d49b (*tok*)
+    pat_1e9d49b
   * [
         `Name_name_choice_auto_semi of (namespace_name * semicolon)
       | `Opt_name_name_comp_stmt of (
@@ -1712,16 +1689,14 @@ type property_promotion_parameter (* inlined *) = (
 )
 [@@deriving sexp_of]
 
-type require_expression (* inlined *) = (pat_35b755d (*tok*) * expression)
+type require_expression (* inlined *) = (pat_35b755d * expression)
 [@@deriving sexp_of]
 
-type require_once_expression (* inlined *) = (
-    pat_feb296c (*tok*) * expression
-)
+type require_once_expression (* inlined *) = (pat_feb296c * expression)
 [@@deriving sexp_of]
 
 type return_statement (* inlined *) = (
-    pat_2539e50 (*tok*)
+    pat_2539e50
   * expression option
   * semicolon
 )
@@ -1742,20 +1717,20 @@ type simple_parameter (* inlined *) = (
 [@@deriving sexp_of]
 
 type switch_statement (* inlined *) = (
-    pat_dad77c5 (*tok*) * parenthesized_expression * switch_block
+    pat_dad77c5 * parenthesized_expression * switch_block
 )
 [@@deriving sexp_of]
 
-type throw_expression (* inlined *) = (pat_6533f64 (*tok*) * expression)
+type throw_expression (* inlined *) = (pat_6533f64 * expression)
 [@@deriving sexp_of]
 
 type trait_declaration (* inlined *) = (
-    pat_3e83199 (*tok*) * name (*tok*) * declaration_list
+    pat_3e83199 * name (*tok*) * declaration_list
 )
 [@@deriving sexp_of]
 
 type try_statement (* inlined *) = (
-    pat_ba29bfc (*tok*)
+    pat_ba29bfc
   * compound_statement
   * [ `Catch_clause of catch_clause | `Fina_clause of finally_clause ]
       list (* one or more *)
@@ -1782,12 +1757,12 @@ type variadic_parameter (* inlined *) = (
 [@@deriving sexp_of]
 
 type while_statement (* inlined *) = (
-    pat_1137973 (*tok*)
+    pat_1137973
   * parenthesized_expression
   * [
         `Choice_empty_stmt of statement
       | `Colon_blk_pat_2bdb730_choice_auto_semi of (
-            colon_block * pat_2bdb730 (*tok*) * semicolon
+            colon_block * pat_2bdb730 * semicolon
         )
     ]
 )
