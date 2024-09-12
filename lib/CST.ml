@@ -1618,3 +1618,10 @@ type yield_expression (* inlined *) = (
     ]
       option
 )
+
+type extra = 
+    Comment of Loc.t * comment
+  | Text_interpolation of Loc.t * text_interpolation
+
+
+type extras = extra list

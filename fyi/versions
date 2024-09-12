@@ -22,7 +22,7 @@ Last change in file:
 ---
 File: semgrep-grammars/src/semgrep-php/grammar.js
 Git repo name: ocaml-tree-sitter-semgrep
-Latest commit in repo: c9a8bca714137c43f8aede5ed2215193d53defc9
+Latest commit in repo: 35576b0e69d86858b69714091f07a6944855baba
 Last change in file:
   commit dfdc3f32aedb879b16c9f8fedcf9f250ed002142
   Author: pad <yoann.padioleau@gmail.com>
