@@ -322,8 +322,8 @@ module.exports = grammar({
 
     property_declaration: $ => seq(
       optional(field('attributes', $.attribute_list)),
-      repeat1($._modifier),
       optional(field('readonly', $.readonly_modifier)),
+      repeat1($._modifier),
       optional(field('type', $._type)),
       commaSep1($.property_element),
       $._semicolon
