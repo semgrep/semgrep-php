@@ -290,6 +290,7 @@ module.exports = grammar({
     ),
 
     final_modifier: $ => keyword('final'),
+    readonly_modifier: $ => keyword('readonly'),
     abstract_modifier: $ => keyword('abstract'),
 
     class_interface_clause: $ => seq(
@@ -322,6 +323,7 @@ module.exports = grammar({
     property_declaration: $ => seq(
       optional(field('attributes', $.attribute_list)),
       repeat1($._modifier),
+      optional(field('readonly', $.readonly_modifier)),
       optional(field('type', $._type)),
       commaSep1($.property_element),
       $._semicolon
