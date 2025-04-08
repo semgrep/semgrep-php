@@ -259,6 +259,7 @@ module.exports = grammar({
     ),
 
     _enum_member_declaration: $ => choice(
+      alias($._class_const_declaration, $.const_declaration),
       $.enum_case,
       $.method_declaration,
       $.use_declaration,
