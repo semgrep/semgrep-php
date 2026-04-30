@@ -8,73 +8,6 @@
 open! Sexplib.Conv
 open Tree_sitter_run
 
-type pat_elseif = Token.t (* pattern [eE][lL][sS][eE][iI][fF] *)
-
-type pat_requ = Token.t (* pattern [rR][eE][qQ][uU][iI][rR][eE] *)
-
-type tok_prec_n1_pat_524a507 = Token.t
-
-type pat_else = Token.t (* pattern [eE][lL][sS][eE] *)
-
-type pat_endf =
-  Token.t (* pattern [eE][nN][dD][fF][oO][rR][eE][aA][cC][hH] *)
-
-type pat_fn = Token.t (* pattern [fF][nN] *)
-
-type eof = Token.t
-
-type pat_ret = Token.t (* pattern [rR][eE][tT][uU][rR][nN] *)
-
-type pat_while = Token.t (* pattern [wW][hH][iI][lL][eE] *)
-
-type pat_endw = Token.t (* pattern [eE][nN][dD][wW][hH][iI][lL][eE] *)
-
-type pat_public = Token.t (* pattern [pP][uU][bB][lL][iI][cC] *)
-
-type pat_imples =
-  Token.t (* pattern [iI][mM][pP][lL][eE][mM][eE][nN][tT][sS] *)
-
-type pat_defa = Token.t (* pattern [dD][eE][fF][aA][uU][lL][tT] *)
-
-type pat_endif = Token.t (* pattern [eE][nN][dD][iI][fF] *)
-
-type pat_prot = Token.t (* pattern [pP][rR][oO][tT][eE][cC][tT][eE][dD] *)
-
-type pat_requ_once =
-  Token.t (* pattern [rR][eE][qQ][uU][iI][rR][eE][__][oO][nN][cC][eE] *)
-
-type name =
-  Token.t (* pattern [_a-zA-Z\u00A1-\u00ff][_a-zA-Z\u00A1-\u00ff\d]* *)
-
-type pat_priv = Token.t (* pattern [pP][rR][iI][vV][aA][tT][eE] *)
-
-type pat_incl = Token.t (* pattern [iI][nN][cC][lL][uU][dD][eE] *)
-
-type var_modifier = Token.t (* pattern [vV][aA][rR] *)
-
-type pat_abst = Token.t (* pattern [aA][bB][sS][tT][rR][aA][cC][tT] *)
-
-type pat_name = Token.t (* pattern [nN][aA][mM][eE][sS][pP][aA][cC][eE] *)
-
-type pat_enum = Token.t (* pattern [eE][nN][uU][mM] *)
-
-type pat_if = Token.t (* pattern [iI][fF] *)
-
-type pat_throw = Token.t (* pattern [tT][hH][rR][oO][wW] *)
-
-type string_ = Token.t
-
-type shell_command_expression = Token.t
-
-type boolean = Token.t (* pattern [Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee] *)
-
-type pat_for = Token.t (* pattern [fF][oO][rR] *)
-
-type pat_endd =
-  Token.t (* pattern [eE][nN][dD][dD][eE][cC][lL][aA][rR][eE] *)
-
-type heredoc = Token.t
-
 type float_ =
   Token.t (* pattern \d*(_\d+)*((\.\d*(_\d+)*\
   )?([eE][\+-]?\d+(_\d+)*\
@@ -82,72 +15,70 @@ type float_ =
   )([eE][\+-]?\d+(_\d+)*\
   )?) *)
 
-type php_tag = Token.t (* pattern <\?([pP][hH][pP]|=)? *)
+type pat_else = Token.t (* pattern [eE][lL][sS][eE] *)
 
-type pat_case = Token.t (* pattern [cC][aA][sS][eE] *)
-
-type pat_goto = Token.t (* pattern [gG][oO][tT][oO] *)
-
-type pat_ends = Token.t (* pattern [eE][nN][dD][sS][wW][iI][tT][cC][hH] *)
-
-type pat_fina = Token.t (* pattern [fF][iI][nN][aA][lL][lL][yY] *)
-
-type pat_f398476 = Token.t (* pattern xor|XOR *)
-
-type pat_b91d208 = Token.t (* pattern [^\s<][^<]* *)
-
-type pat_final = Token.t (* pattern [fF][iI][nN][aA][lL] *)
-
-type pat_try = Token.t (* pattern [tT][rR][yY] *)
-
-type pat_extends = Token.t (* pattern [eE][xX][tT][eE][nN][dD][sS] *)
-
-type pat_switch = Token.t (* pattern [sS][wW][iI][tT][cC][hH] *)
-
-type pat_inte = Token.t (* pattern [iI][nN][tT][eE][rR][fF][aA][cC][eE] *)
-
-type pat_match = Token.t (* pattern [mM][aA][tT][cC][hH] *)
+type pat_public = Token.t (* pattern [pP][uU][bB][lL][iI][cC] *)
 
 type pat_echo = Token.t (* pattern [eE][cC][hH][oO] *)
 
-type pat_incl_once =
-  Token.t (* pattern [iI][nN][cC][lL][uU][dD][eE][__][oO][nN][cC][eE] *)
+type pat_endd =
+  Token.t (* pattern [eE][nN][dD][dD][eE][cC][lL][aA][rR][eE] *)
 
-type pat_endfor = Token.t (* pattern [eE][nN][dD][fF][oO][rR] *)
+type pat_final = Token.t (* pattern [fF][iI][nN][aA][lL] *)
 
-type pat_func = Token.t (* pattern [fF][uU][nN][cC][tT][iI][oO][nN] *)
+type shell_command_expression = Token.t
 
-type pat_e0610ac = Token.t (* pattern and|AND *)
+type pat_requ_once =
+  Token.t (* pattern [rR][eE][qQ][uU][iI][rR][eE][__][oO][nN][cC][eE] *)
 
-type pat_inst_ =
-  Token.t (* pattern [iI][nN][sS][tT][aA][nN][cC][eE][oO][fF] *)
+type pat_use = Token.t (* pattern [uU][sS][eE] *)
+
+type pat_ends = Token.t (* pattern [eE][nN][dD][sS][wW][iI][tT][cC][hH] *)
+
+type pat_prot = Token.t (* pattern [pP][rR][oO][tT][eE][cC][tT][eE][dD] *)
+
+type semgrep_variadic_metavariable =
+  Token.t (* pattern \$\.\.\.[A-Z_][A-Z_0-9]* *)
+
+type pat_if = Token.t (* pattern [iI][fF] *)
+
+type automatic_semicolon = Token.t
 
 type pat_cont = Token.t (* pattern [cC][oO][nN][tT][iI][nN][uU][eE] *)
 
-type primitive_type = [
-    `Array of Token.t (* "array" *)
-  | `Call of Token.t (* "callable" *)
-  | `Iter of Token.t (* "iterable" *)
-  | `Bool of Token.t (* "bool" *)
-  | `Float of Token.t (* "float" *)
-  | `Int of Token.t (* "int" *)
-  | `Str of Token.t (* "string" *)
-  | `Void of Token.t (* "void" *)
-  | `Mixed of Token.t (* "mixed" *)
-  | `Static of Token.t (* "static" *)
-  | `False of Token.t (* "false" *)
-  | `Null of Token.t (* "null" *)
-]
+type pat_endfor = Token.t (* pattern [eE][nN][dD][fF][oO][rR] *)
 
-type pat_inst = Token.t (* pattern [iI][nN][sS][tT][eE][aA][dD][oO][fF] *)
+type pat_priv = Token.t (* pattern [pP][rR][iI][vV][aA][tT][eE] *)
 
-type null = Token.t (* pattern [nN][uU][lL][lL] *)
+type pat_requ = Token.t (* pattern [rR][eE][qQ][uU][iI][rR][eE] *)
 
-type pat_as = Token.t (* pattern [aA][sS] *)
+type pat_name = Token.t (* pattern [nN][aA][mM][eE][sS][pP][aA][cC][eE] *)
 
-type pat_fore = Token.t (* pattern [fF][oO][rR][eE][aA][cC][hH] *)
+type pat_imples =
+  Token.t (* pattern [iI][mM][pP][lL][eE][mM][eE][nN][tT][sS] *)
 
-type pat_catch = Token.t (* pattern [cC][aA][tT][cC][hH] *)
+type eof = Token.t
+
+type name =
+  Token.t (* pattern [_a-zA-Z\u00A1-\u00ff][_a-zA-Z\u00A1-\u00ff\d]* *)
+
+type integer = Token.t
+
+type tok_prec_n1_pat_524a507 = Token.t
+
+type pat_48a4c46 = Token.t (* pattern or|OR *)
+
+type pat_match = Token.t (* pattern [mM][aA][tT][cC][hH] *)
+
+type pat_endw = Token.t (* pattern [eE][nN][dD][wW][hH][iI][lL][eE] *)
+
+type pat_goto = Token.t (* pattern [gG][oO][tT][oO] *)
+
+type pat_switch = Token.t (* pattern [sS][wW][iI][tT][cC][hH] *)
+
+type semgrep_metavar_ident = Token.t
+
+type string_ = Token.t
 
 type cast_type = [
     `Array of Token.t (* "array" *)
@@ -164,41 +95,113 @@ type cast_type = [
   | `Unset of Token.t (* "unset" *)
 ]
 
-type pat_class = Token.t (* pattern [cC][lL][aA][sS][sS] *)
+type pat_fn = Token.t (* pattern [fF][nN] *)
 
-type pat_do = Token.t (* pattern [dD][oO] *)
+type pat_elseif = Token.t (* pattern [eE][lL][sS][eE][iI][fF] *)
+
+type pat_while = Token.t (* pattern [wW][hH][iI][lL][eE] *)
 
 type pat_brk = Token.t (* pattern [bB][rR][eE][aA][kK] *)
 
 type pat_global = Token.t (* pattern [gG][lL][oO][bB][aA][lL] *)
 
+type pat_endif = Token.t (* pattern [eE][nN][dD][iI][fF] *)
+
+type pat_f398476 = Token.t (* pattern xor|XOR *)
+
+type pat_extends = Token.t (* pattern [eE][xX][tT][eE][nN][dD][sS] *)
+
+type pat_as = Token.t (* pattern [aA][sS] *)
+
+type pat_fina = Token.t (* pattern [fF][iI][nN][aA][lL][lL][yY] *)
+
+type pat_trait = Token.t (* pattern [tT][rR][aA][iI][tT] *)
+
+type pat_enum = Token.t (* pattern [eE][nN][uU][mM] *)
+
 type pat_static = Token.t (* pattern [sS][tT][aA][tT][iI][cC] *)
 
-type automatic_semicolon = Token.t
+type null = Token.t (* pattern [nN][uU][lL][lL] *)
 
-type pat_use = Token.t (* pattern [uU][sS][eE] *)
+type pat_inst_ =
+  Token.t (* pattern [iI][nN][sS][tT][aA][nN][cC][eE][oO][fF] *)
 
-type pat_48a4c46 = Token.t (* pattern or|OR *)
+type pat_inte = Token.t (* pattern [iI][nN][tT][eE][rR][fF][aA][cC][eE] *)
+
+type pat_e0610ac = Token.t (* pattern and|AND *)
+
+type pat_incl = Token.t (* pattern [iI][nN][cC][lL][uU][dD][eE] *)
+
+type pat_endf =
+  Token.t (* pattern [eE][nN][dD][fF][oO][rR][eE][aA][cC][hH] *)
+
+type pat_fore = Token.t (* pattern [fF][oO][rR][eE][aA][cC][hH] *)
+
+type pat_do = Token.t (* pattern [dD][oO] *)
+
+type pat_inst = Token.t (* pattern [iI][nN][sS][tT][eE][aA][dD][oO][fF] *)
 
 type pat_const = Token.t (* pattern [cC][oO][nN][sS][tT] *)
 
-type pat_trait = Token.t (* pattern [tT][rR][aA][iI][tT] *)
+type php_tag = Token.t (* pattern <\?([pP][hH][pP]|=)? *)
+
+type pat_incl_once =
+  Token.t (* pattern [iI][nN][cC][lL][uU][dD][eE][__][oO][nN][cC][eE] *)
+
+type var_modifier = Token.t (* pattern [vV][aA][rR] *)
+
+type pat_abst = Token.t (* pattern [aA][bB][sS][tT][rR][aA][cC][tT] *)
+
+type pat_for = Token.t (* pattern [fF][oO][rR] *)
+
+type pat_case = Token.t (* pattern [cC][aA][sS][eE] *)
+
+type primitive_type = [
+    `Array of Token.t (* "array" *)
+  | `Call of Token.t (* "callable" *)
+  | `Iter of Token.t (* "iterable" *)
+  | `Bool of Token.t (* "bool" *)
+  | `Float of Token.t (* "float" *)
+  | `Int of Token.t (* "int" *)
+  | `Str of Token.t (* "string" *)
+  | `Void of Token.t (* "void" *)
+  | `Mixed of Token.t (* "mixed" *)
+  | `Static of Token.t (* "static" *)
+  | `False of Token.t (* "false" *)
+  | `Null of Token.t (* "null" *)
+]
+
+type boolean = Token.t (* pattern [Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee] *)
+
+type pat_catch = Token.t (* pattern [cC][aA][tT][cC][hH] *)
+
+type pat_defa = Token.t (* pattern [dD][eE][fF][aA][uU][lL][tT] *)
+
+type pat_b91d208 = Token.t (* pattern [^\s<][^<]* *)
+
+type pat_func = Token.t (* pattern [fF][uU][nN][cC][tT][iI][oO][nN] *)
+
+type pat_ret = Token.t (* pattern [rR][eE][tT][uU][rR][nN] *)
+
+type pat_try = Token.t (* pattern [tT][rR][yY] *)
+
+type pat_class = Token.t (* pattern [cC][lL][aA][sS][sS] *)
+
+type pat_throw = Token.t (* pattern [tT][hH][rR][oO][wW] *)
 
 type anon_choice_COLON_5102e09 = [
     `COLON of Token.t (* ":" *)
   | `SEMI of Token.t (* ";" *)
 ]
 
-type integer = Token.t
+type heredoc = Token.t
 
-type named_label_statement = (name (*tok*) * Token.t (* ":" *))
+type final_modifier = pat_final
 
-type variable_name = (Token.t (* "$" *) * name (*tok*))
-
-type namespace_name = (
-    name (*tok*)
-  * (Token.t (* "\\" *) * name (*tok*)) list (* zero or more *)
-)
+type semicolon = [
+    `Auto_semi of automatic_semicolon (*tok*)
+  | `SEMI of Token.t (* ";" *)
+]
 
 type visibility_modifier = [
     `Pat_public of pat_public
@@ -206,9 +209,25 @@ type visibility_modifier = [
   | `Pat_priv of pat_priv
 ]
 
-type abstract_modifier = pat_abst
+type named_label_statement = (name (*tok*) * Token.t (* ":" *))
 
-type string__ = [ `Str of string_ (*tok*) | `Here of heredoc (*tok*) ]
+type namespace_name = (
+    name (*tok*)
+  * (Token.t (* "\\" *) * name (*tok*)) list (* zero or more *)
+)
+
+type variable_name = (Token.t (* "$" *) * name (*tok*))
+
+type semgrep_extended_name = [
+    `Name of name (*tok*)
+  | `Semg_meta_id of semgrep_metavar_ident (*tok*)
+]
+
+type namespace_aliasing_clause = (pat_as * name (*tok*))
+
+type static_modifier = pat_static
+
+type abstract_modifier = pat_abst
 
 type text =
   [
@@ -217,32 +236,14 @@ type text =
   ]
     list (* one or more *)
 
-type final_modifier = pat_final
-
-type namespace_aliasing_clause = (pat_as * name (*tok*))
-
-type static_modifier = pat_static
-
-type semicolon = [
-    `Auto_semi of automatic_semicolon (*tok*)
-  | `SEMI of Token.t (* ";" *)
-]
-
 type anon_choice_pat_func_6731ab8 = [
     `Pat_func of pat_func
   | `Pat_const of pat_const
 ]
 
-type anonymous_function_use_clause = (
-    pat_use
-  * Token.t (* "(" *)
-  * Token.t (* "&" *) option
-  * variable_name
-  * (Token.t (* "," *) * Token.t (* "&" *) option * variable_name)
-      list (* zero or more *)
-  * Token.t (* "," *) option
-  * Token.t (* ")" *)
-)
+type string__ = [ `Str of string_ (*tok*) | `Here of heredoc (*tok*) ]
+
+type goto_statement = (pat_goto * name (*tok*) * semicolon)
 
 type namespace_name_as_prefix = [
     `BSLASH of Token.t (* "\\" *)
@@ -260,12 +261,21 @@ type namespace_name_as_prefix = [
     )
 ]
 
-type literal = [
-    `Int of integer (*tok*)
-  | `Float of float_ (*tok*)
-  | `Str_ of string__
-  | `Bool of boolean (*tok*)
-  | `Null of null (*tok*)
+type anonymous_function_use_clause = (
+    pat_use
+  * Token.t (* "(" *)
+  * Token.t (* "&" *) option
+  * variable_name
+  * (Token.t (* "," *) * Token.t (* "&" *) option * variable_name)
+      list (* zero or more *)
+  * Token.t (* "," *) option
+  * Token.t (* ")" *)
+)
+
+type reserved_identifier = [
+    `Self of Token.t (* "self" *)
+  | `Parent of Token.t (* "parent" *)
+  | `Pat_static of static_modifier
 ]
 
 type relative_scope = [
@@ -282,29 +292,21 @@ type modifier = [
   | `Abst_modi of abstract_modifier
 ]
 
-type reserved_identifier = [
-    `Self of Token.t (* "self" *)
-  | `Parent of Token.t (* "parent" *)
-  | `Pat_static of static_modifier
-]
-
 type namespace_use_group_clause = (
     anon_choice_pat_func_6731ab8 option
   * namespace_name
   * namespace_aliasing_clause option
 )
 
-type qualified_name = (namespace_name_as_prefix * name (*tok*))
+type literal = [
+    `Int of integer (*tok*)
+  | `Float of float_ (*tok*)
+  | `Str_ of string__
+  | `Bool of boolean (*tok*)
+  | `Null of null (*tok*)
+]
 
-type declare_directive = (
-    [
-        `Ticks of Token.t (* "ticks" *)
-      | `Enco of Token.t (* "encoding" *)
-      | `Strict_types of Token.t (* "strict_types" *)
-    ]
-  * Token.t (* "=" *)
-  * literal
-)
+type qualified_name = (namespace_name_as_prefix * name (*tok*))
 
 type anon_choice_name_9dd129a = [
     `Name of name (*tok*)
@@ -318,7 +320,15 @@ type namespace_use_group = (
   * Token.t (* "}" *)
 )
 
-type named_type = [ `Name of name (*tok*) | `Qual_name of qualified_name ]
+type declare_directive = (
+    [
+        `Ticks of Token.t (* "ticks" *)
+      | `Enco of Token.t (* "encoding" *)
+      | `Strict_types of Token.t (* "strict_types" *)
+    ]
+  * Token.t (* "=" *)
+  * literal
+)
 
 type anon_choice_name_062e4f2 = [
     `Name of name (*tok*)
@@ -326,26 +336,58 @@ type anon_choice_name_062e4f2 = [
   | `Qual_name of qualified_name
 ]
 
+type named_type = [
+    `Name of name (*tok*)
+  | `Qual_name of qualified_name
+  | `Semg_meta_id of semgrep_metavar_ident (*tok*)
+]
+
+type anon_choice_name_a5746e5 = [
+    `Name of name (*tok*)
+  | `Rese_id of reserved_identifier
+  | `Qual_name of qualified_name
+  | `Semg_meta_id of semgrep_metavar_ident (*tok*)
+]
+
+type namespace_use_clause = (
+    anon_choice_name_062e4f2
+  * namespace_aliasing_clause option
+)
+
 type type_list = (
     named_type
   * (Token.t (* "|" *) * named_type) list (* zero or more *)
 )
 
-type base_clause = (
-    pat_extends
-  * anon_choice_name_062e4f2
-  * (Token.t (* "," *) * anon_choice_name_062e4f2) list (* zero or more *)
-)
-
 type class_interface_clause = (
     pat_imples
-  * anon_choice_name_062e4f2
-  * (Token.t (* "," *) * anon_choice_name_062e4f2) list (* zero or more *)
+  * anon_choice_name_a5746e5
+  * (Token.t (* "," *) * anon_choice_name_a5746e5) list (* zero or more *)
 )
 
-type namespace_use_clause = (
-    anon_choice_name_062e4f2
-  * namespace_aliasing_clause option
+type base_clause = (
+    pat_extends
+  * anon_choice_name_a5746e5
+  * (Token.t (* "," *) * anon_choice_name_a5746e5) list (* zero or more *)
+)
+
+type namespace_use_declaration = (
+    pat_use
+  * anon_choice_pat_func_6731ab8 option
+  * [
+        `Name_use_clause_rep_COMMA_name_use_clause of (
+            namespace_use_clause
+          * (Token.t (* "," *) * namespace_use_clause)
+              list (* zero or more *)
+        )
+      | `Opt_BSLASH_name_name_BSLASH_name_use_group of (
+            Token.t (* "\\" *) option
+          * namespace_name
+          * Token.t (* "\\" *)
+          * namespace_use_group
+        )
+    ]
+  * semicolon
 )
 
 type types = [
@@ -414,14 +456,15 @@ and anon_choice_list_dest_bb41c20 = [
   | `Choice_cast_var of variable
 ]
 
-and anon_choice_match_cond_exp_d891119 = [
+and anon_choice_match_cond_exp_b464e1a = [
     `Match_cond_exp of (
         match_condition_list * Token.t (* "=>" *) * expression
     )
   | `Match_defa_exp of (pat_defa * Token.t (* "=>" *) * expression)
+  | `Semg_ellips of Token.t (* "..." *)
 ]
 
-and anon_choice_simple_param_5af5eb3 = [
+and anon_choice_simple_param_64cb7b6 = [
     `Simple_param of (
         attribute_list option
       * type_ option
@@ -442,12 +485,17 @@ and anon_choice_simple_param_5af5eb3 = [
       * variable_name
       * property_initializer option
     )
+  | `Semg_ellips of Token.t (* "..." *)
+  | `Semg_vari_meta of semgrep_variadic_metavariable (*tok*)
 ]
 
-and argument = (
-    named_label_statement option
-  * [ `Vari_unpa of variadic_unpacking | `Exp of expression ]
-)
+and argument = [
+    `Opt_name_COLON_choice_vari_unpa of (
+        named_label_statement option
+      * [ `Vari_unpa of variadic_unpacking | `Exp of expression ]
+    )
+  | `Semg_vari_meta of semgrep_variadic_metavariable (*tok*)
+]
 
 and arguments = (
     Token.t (* "(" *)
@@ -492,7 +540,14 @@ and array_element_initializer = [
   | `Vari_unpa of variadic_unpacking
 ]
 
-and attribute = (anon_choice_name_062e4f2 * arguments option)
+and assignment_expression = (
+    [ `Choice_cast_var of variable | `List_lit of list_literal ]
+  * Token.t (* "=" *)
+  * Token.t (* "&" *) option
+  * expression
+)
+
+and attribute = (anon_choice_name_a5746e5 * arguments option)
 
 and attribute_list =
   (
@@ -502,6 +557,26 @@ and attribute_list =
     * Token.t (* "]" *)
   )
     list (* one or more *)
+
+and augmented_assignment_expression = (
+    variable
+  * [
+        `STARSTAREQ of Token.t (* "**=" *)
+      | `STAREQ of Token.t (* "*=" *)
+      | `SLASHEQ of Token.t (* "/=" *)
+      | `PERCEQ of Token.t (* "%=" *)
+      | `PLUSEQ of Token.t (* "+=" *)
+      | `DASHEQ of Token.t (* "-=" *)
+      | `DOTEQ of Token.t (* ".=" *)
+      | `LTLTEQ of Token.t (* "<<=" *)
+      | `GTGTEQ of Token.t (* ">>=" *)
+      | `AMPEQ of Token.t (* "&=" *)
+      | `HATEQ of Token.t (* "^=" *)
+      | `BAREQ of Token.t (* "|=" *)
+      | `QMARKQMARKEQ of Token.t (* "??=" *)
+    ]
+  * expression
+)
 
 and binary_expression = [
     `Un_exp_pat_inst__choice_qual_name of (
@@ -535,6 +610,8 @@ and binary_expression = [
   | `Exp_SLASH_exp of (expression * Token.t (* "/" *) * expression)
   | `Exp_PERC_exp of (expression * Token.t (* "%" *) * expression)
 ]
+
+and break_statement = (pat_brk * expression option * semicolon)
 
 and callable_expression = [
     `Choice_choice_dyna_var_name of callable_variable
@@ -578,9 +655,27 @@ and catch_clause = (
   * compound_statement
 )
 
+and class_const_declaration = (
+    attribute_list option
+  * final_modifier option
+  * const_declaration
+)
+
 and class_constant_access_expression = (
     scope_resolution_qualifier * Token.t (* "::" *)
   * anon_choice_name_9dd129a
+)
+
+and class_declaration = (
+    attribute_list option
+  * [ `Final_modi of final_modifier | `Abst_modi of abstract_modifier ]
+      option
+  * pat_class
+  * semgrep_extended_name
+  * base_clause option
+  * class_interface_clause option
+  * declaration_list
+  * semicolon option
 )
 
 and class_type_designator = [
@@ -604,6 +699,14 @@ and compound_statement = (
   * Token.t (* "}" *)
 )
 
+and conditional_expression = (
+    expression
+  * Token.t (* "?" *)
+  * expression option
+  * Token.t (* ":" *)
+  * expression
+)
+
 and const_declaration = const_declaration_
 
 and const_declaration_ = (
@@ -618,10 +721,29 @@ and const_element = (
     anon_choice_name_9dd129a * Token.t (* "=" *) * expression
 )
 
+and continue_statement = (pat_cont * expression option * semicolon)
+
 and declaration_list = (
     Token.t (* "{" *)
   * member_declaration list (* zero or more *)
   * Token.t (* "}" *)
+)
+
+and declare_statement = (
+    Token.t (* "declare" *)
+  * Token.t (* "(" *)
+  * declare_directive
+  * Token.t (* ")" *)
+  * [
+        `Choice_choice_empty_stmt of statement
+      | `COLON_rep_choice_choice_empty_stmt_pat_endd_choice_auto_semi of (
+            Token.t (* ":" *)
+          * statement list (* zero or more *)
+          * pat_endd
+          * semicolon
+        )
+      | `Choice_auto_semi of semicolon
+    ]
 )
 
 and dereferencable_expression = [
@@ -635,6 +757,10 @@ and dereferencable_expression = [
   | `Str_ of string__
 ]
 
+and do_statement = (
+    pat_do * statement * pat_while * parenthesized_expression * semicolon
+)
+
 and dynamic_variable_name = [
     `DOLLAR_choice_dyna_var_name of (Token.t (* "$" *) * variable_name_)
   | `DOLLAR_LCURL_exp_RCURL of (
@@ -642,6 +768,8 @@ and dynamic_variable_name = [
       * Token.t (* "}" *)
     )
 ]
+
+and echo_statement = (pat_echo * expressions * semicolon)
 
 and else_clause = (pat_else * statement)
 
@@ -651,6 +779,27 @@ and else_if_clause = (pat_elseif * parenthesized_expression * statement)
 
 and else_if_clause_2 = (pat_elseif * parenthesized_expression * colon_block)
 
+and enum_case = (
+    attribute_list option
+  * Token.t (* "case" *)
+  * name (*tok*)
+  * (
+        Token.t (* "=" *)
+      * [ `Str of string_ (*tok*) | `Int of integer (*tok*) ]
+    )
+      option
+  * semicolon
+)
+
+and enum_declaration = (
+    attribute_list option
+  * pat_enum
+  * semgrep_extended_name
+  * return_type option
+  * class_interface_clause option
+  * enum_declaration_list
+)
+
 and enum_declaration_list = (
     Token.t (* "{" *)
   * enum_member_declaration list (* zero or more *)
@@ -658,19 +807,12 @@ and enum_declaration_list = (
 )
 
 and enum_member_declaration = [
-    `Enum_case of (
-        attribute_list option
-      * Token.t (* "case" *)
-      * name (*tok*)
-      * (
-            Token.t (* "=" *)
-          * [ `Str of string_ (*tok*) | `Int of integer (*tok*) ]
-        )
-          option
-      * semicolon
-    )
-  | `Meth_decl of method_declaration
-  | `Use_decl of use_declaration
+    `Choice_enum_case of [
+        `Enum_case of enum_case
+      | `Meth_decl of method_declaration
+      | `Use_decl of use_declaration
+    ]
+  | `Semg_ellips of Token.t (* "..." *)
 ]
 
 and exponentiation_expression = (
@@ -684,60 +826,69 @@ and exponentiation_expression = (
 )
 
 and expression = [
-    `Cond_exp of (
-        expression
-      * Token.t (* "?" *)
-      * expression option
-      * Token.t (* ":" *)
-      * expression
+    `Choice_cond_exp of [
+        `Cond_exp of conditional_expression
+      | `Match_exp of match_expression
+      | `Augm_assign_exp of augmented_assignment_expression
+      | `Assign_exp of assignment_expression
+      | `Yield_exp of yield_expression
+      | `Un_exp of unary_expression
+      | `Bin_exp of binary_expression
+      | `Incl_exp of include_expression
+      | `Incl_once_exp of include_once_expression
+      | `Requ_exp of require_expression
+      | `Requ_once_exp of require_once_expression
+    ]
+  | `Semg_ellips of Token.t (* "..." *)
+  | `Semg_deep_ellips of (
+        Token.t (* "<..." *) * expression * Token.t (* "...>" *)
     )
-  | `Match_exp of (pat_match * parenthesized_expression * match_block)
-  | `Augm_assign_exp of (
-        variable
-      * [
-            `STARSTAREQ of Token.t (* "**=" *)
-          | `STAREQ of Token.t (* "*=" *)
-          | `SLASHEQ of Token.t (* "/=" *)
-          | `PERCEQ of Token.t (* "%=" *)
-          | `PLUSEQ of Token.t (* "+=" *)
-          | `DASHEQ of Token.t (* "-=" *)
-          | `DOTEQ of Token.t (* ".=" *)
-          | `LTLTEQ of Token.t (* "<<=" *)
-          | `GTGTEQ of Token.t (* ">>=" *)
-          | `AMPEQ of Token.t (* "&=" *)
-          | `HATEQ of Token.t (* "^=" *)
-          | `BAREQ of Token.t (* "|=" *)
-          | `QMARKQMARKEQ of Token.t (* "??=" *)
-        ]
-      * expression
-    )
-  | `Assign_exp of (
-        [ `Choice_cast_var of variable | `List_lit of list_literal ]
-      * Token.t (* "=" *)
-      * Token.t (* "&" *) option
-      * expression
-    )
-  | `Yield_exp of (
-        Token.t (* "yield" *)
-      * [
-            `Array_elem_init of array_element_initializer
-          | `From_exp of (Token.t (* "from" *) * expression)
-        ]
-          option
-    )
-  | `Un_exp of unary_expression
-  | `Bin_exp of binary_expression
-  | `Incl_exp of (pat_incl * expression)
-  | `Incl_once_exp of (pat_incl_once * expression)
-  | `Requ_exp of (pat_requ * expression)
-  | `Requ_once_exp of (pat_requ_once * expression)
 ]
+
+and expression_statement = (expression * semicolon)
 
 and expressions = [ `Exp of expression | `Seq_exp of sequence_expression ]
 
 and finally_clause = (pat_fina * compound_statement)
 
+and for_statement = (
+    pat_for
+  * Token.t (* "(" *)
+  * expressions option
+  * Token.t (* ";" *)
+  * expressions option
+  * Token.t (* ";" *)
+  * expressions option
+  * Token.t (* ")" *)
+  * [
+        `Choice_auto_semi of semicolon
+      | `Choice_choice_empty_stmt of statement
+      | `COLON_rep_choice_choice_empty_stmt_pat_endfor_choice_auto_semi of (
+            Token.t (* ":" *)
+          * statement list (* zero or more *)
+          * pat_endfor
+          * semicolon
+        )
+    ]
+)
+
 and foreach_pair = (expression * Token.t (* "=>" *) * foreach_value)
+
+and foreach_statement = (
+    pat_fore
+  * Token.t (* "(" *)
+  * expression
+  * pat_as
+  * [ `Fore_pair of foreach_pair | `Choice_opt_AMP_exp of foreach_value ]
+  * Token.t (* ")" *)
+  * [
+        `Choice_auto_semi of semicolon
+      | `Choice_choice_empty_stmt of statement
+      | `Colon_blk_pat_endf_choice_auto_semi of (
+            colon_block * pat_endf * semicolon
+        )
+    ]
+)
 
 and foreach_value = [
     `Opt_AMP_exp of (Token.t (* "&" *) option * expression)
@@ -747,8 +898,8 @@ and foreach_value = [
 and formal_parameters = (
     Token.t (* "(" *)
   * (
-        anon_choice_simple_param_5af5eb3
-      * (Token.t (* "," *) * anon_choice_simple_param_5af5eb3)
+        anon_choice_simple_param_64cb7b6
+      * (Token.t (* "," *) * anon_choice_simple_param_64cb7b6)
           list (* zero or more *)
     )
       option
@@ -756,12 +907,66 @@ and formal_parameters = (
   * Token.t (* ")" *)
 )
 
+and function_definition = (
+    attribute_list option
+  * function_definition_header
+  * compound_statement
+)
+
 and function_definition_header = (
     pat_func
   * Token.t (* "&" *) option
-  * anon_choice_name_9dd129a
+  * [
+        `Name of name (*tok*)
+      | `Rese_id of reserved_identifier
+      | `Semg_meta_id of semgrep_metavar_ident (*tok*)
+    ]
   * formal_parameters
   * return_type option
+)
+
+and function_static_declaration = (
+    static_modifier
+  * static_variable_declaration
+  * (Token.t (* "," *) * static_variable_declaration) list (* zero or more *)
+  * semicolon
+)
+
+and global_declaration = (
+    pat_global
+  * variable_name_
+  * (Token.t (* "," *) * variable_name_) list (* zero or more *)
+  * semicolon
+)
+
+and if_statement = (
+    pat_if
+  * parenthesized_expression
+  * [
+        `Choice_choice_empty_stmt_rep_else_if_clause_opt_else_clause of (
+            statement
+          * else_if_clause list (* zero or more *)
+          * else_clause option
+        )
+      | `Colon_blk_rep_else_if_clause_2_opt_else_clause_2_pat_endif_choice_auto_semi of (
+            colon_block
+          * else_if_clause_2 list (* zero or more *)
+          * else_clause_2 option
+          * pat_endif
+          * semicolon
+        )
+    ]
+)
+
+and include_expression = (pat_incl * expression)
+
+and include_once_expression = (pat_incl_once * expression)
+
+and interface_declaration = (
+    pat_inte
+  * semgrep_extended_name
+  * base_clause option
+  * declaration_list
 )
 
 and list_destructing = (
@@ -780,8 +985,8 @@ and list_literal = [
 
 and match_block = (
     Token.t (* "{" *)
-  * anon_choice_match_cond_exp_d891119
-  * (Token.t (* "," *) * anon_choice_match_cond_exp_d891119)
+  * anon_choice_match_cond_exp_b464e1a
+  * (Token.t (* "," *) * anon_choice_match_cond_exp_b464e1a)
       list (* zero or more *)
   * Token.t (* "," *) option
   * Token.t (* "}" *)
@@ -792,26 +997,20 @@ and match_condition_list = (
   * (Token.t (* "," *) * expression) list (* zero or more *)
 )
 
+and match_expression = (pat_match * parenthesized_expression * match_block)
+
 and member_access_expression = (
     dereferencable_expression * Token.t (* "->" *) * member_name
 )
 
 and member_declaration = [
-    `Class_const_decl of (
-        attribute_list option
-      * final_modifier option
-      * const_declaration
-    )
-  | `Prop_decl of (
-        attribute_list option
-      * modifier list (* one or more *)
-      * type_ option
-      * property_element
-      * (Token.t (* "," *) * property_element) list (* zero or more *)
-      * semicolon
-    )
-  | `Meth_decl of method_declaration
-  | `Use_decl of use_declaration
+    `Choice_class_const_decl of [
+        `Class_const_decl of class_const_declaration
+      | `Prop_decl of property_declaration
+      | `Meth_decl of method_declaration
+      | `Use_decl of use_declaration
+    ]
+  | `Semg_ellips of Token.t (* "..." *)
 ]
 
 and member_name = [
@@ -828,6 +1027,17 @@ and method_declaration = (
   * modifier list (* zero or more *)
   * function_definition_header
   * [ `Comp_stmt of compound_statement | `Choice_auto_semi of semicolon ]
+)
+
+and namespace_definition = (
+    pat_name
+  * [
+        `Name_name_choice_auto_semi of (namespace_name * semicolon)
+      | `Opt_name_name_comp_stmt of (
+            namespace_name option
+          * compound_statement
+        )
+    ]
 )
 
 and nullsafe_member_access_expression = (
@@ -887,9 +1097,24 @@ and primary_expression = [
   | `Throw_exp of (pat_throw * expression)
 ]
 
+and property_declaration = (
+    attribute_list option
+  * modifier list (* one or more *)
+  * type_ option
+  * property_element
+  * (Token.t (* "," *) * property_element) list (* zero or more *)
+  * semicolon
+)
+
 and property_element = (variable_name * property_initializer option)
 
 and property_initializer = (Token.t (* "=" *) * expression)
+
+and require_expression = (pat_requ * expression)
+
+and require_once_expression = (pat_requ_once * expression)
+
+and return_statement = (pat_ret * expression option * semicolon)
 
 and scope_resolution_qualifier = [
     `Rela_scope of relative_scope
@@ -910,185 +1135,37 @@ and sequence_expression = (
 )
 
 and statement = [
-    `Empty_stmt of Token.t (* ";" *)
-  | `Comp_stmt of compound_statement
-  | `Named_label_stmt of named_label_statement
-  | `Exp_stmt of (expression * semicolon)
-  | `If_stmt of (
-        pat_if
-      * parenthesized_expression
-      * [
-            `Choice_empty_stmt_rep_else_if_clause_opt_else_clause of (
-                statement
-              * else_if_clause list (* zero or more *)
-              * else_clause option
-            )
-          | `Colon_blk_rep_else_if_clause_2_opt_else_clause_2_pat_endif_choice_auto_semi of (
-                colon_block
-              * else_if_clause_2 list (* zero or more *)
-              * else_clause_2 option
-              * pat_endif
-              * semicolon
-            )
-        ]
-    )
-  | `Switch_stmt of (pat_switch * parenthesized_expression * switch_block)
-  | `While_stmt of (
-        pat_while
-      * parenthesized_expression
-      * [
-            `Choice_empty_stmt of statement
-          | `Colon_blk_pat_endw_choice_auto_semi of (
-                colon_block * pat_endw * semicolon
-            )
-        ]
-    )
-  | `Do_stmt of (
-        pat_do * statement * pat_while * parenthesized_expression * semicolon
-    )
-  | `For_stmt of (
-        pat_for
-      * Token.t (* "(" *)
-      * expressions option
-      * Token.t (* ";" *)
-      * expressions option
-      * Token.t (* ";" *)
-      * expressions option
-      * Token.t (* ")" *)
-      * [
-            `Choice_auto_semi of semicolon
-          | `Choice_empty_stmt of statement
-          | `COLON_rep_choice_empty_stmt_pat_endfor_choice_auto_semi of (
-                Token.t (* ":" *)
-              * statement list (* zero or more *)
-              * pat_endfor
-              * semicolon
-            )
-        ]
-    )
-  | `Fore_stmt of (
-        pat_fore
-      * Token.t (* "(" *)
-      * expression
-      * pat_as
-      * [ `Fore_pair of foreach_pair | `Choice_opt_AMP_exp of foreach_value ]
-      * Token.t (* ")" *)
-      * [
-            `Choice_auto_semi of semicolon
-          | `Choice_empty_stmt of statement
-          | `Colon_blk_pat_endf_choice_auto_semi of (
-                colon_block * pat_endf * semicolon
-            )
-        ]
-    )
-  | `Goto_stmt of (pat_goto * name (*tok*) * semicolon)
-  | `Cont_stmt of (pat_cont * expression option * semicolon)
-  | `Brk_stmt of (pat_brk * expression option * semicolon)
-  | `Ret_stmt of (pat_ret * expression option * semicolon)
-  | `Try_stmt of (
-        pat_try
-      * compound_statement
-      * [ `Catch_clause of catch_clause | `Fina_clause of finally_clause ]
-          list (* one or more *)
-    )
-  | `Decl_stmt of (
-        Token.t (* "declare" *)
-      * Token.t (* "(" *)
-      * declare_directive
-      * Token.t (* ")" *)
-      * [
-            `Choice_empty_stmt of statement
-          | `COLON_rep_choice_empty_stmt_pat_endd_choice_auto_semi of (
-                Token.t (* ":" *)
-              * statement list (* zero or more *)
-              * pat_endd
-              * semicolon
-            )
-          | `Choice_auto_semi of semicolon
-        ]
-    )
-  | `Echo_stmt of (pat_echo * expressions * semicolon)
-  | `Unset_stmt of (
-        Token.t (* "unset" *)
-      * Token.t (* "(" *)
-      * variable
-      * (Token.t (* "," *) * variable) list (* zero or more *)
-      * Token.t (* ")" *)
-      * semicolon
-    )
-  | `Const_decl of const_declaration
-  | `Func_defi of (
-        attribute_list option
-      * function_definition_header
-      * compound_statement
-    )
-  | `Class_decl of (
-        attribute_list option
-      * [ `Final_modi of final_modifier | `Abst_modi of abstract_modifier ]
-          option
-      * pat_class
-      * name (*tok*)
-      * base_clause option
-      * class_interface_clause option
-      * declaration_list
-      * semicolon option
-    )
-  | `Inte_decl of (
-        pat_inte
-      * name (*tok*)
-      * base_clause option
-      * declaration_list
-    )
-  | `Trait_decl of (pat_trait * name (*tok*) * declaration_list)
-  | `Enum_decl of (
-        attribute_list option
-      * pat_enum
-      * name (*tok*)
-      * return_type option
-      * class_interface_clause option
-      * enum_declaration_list
-    )
-  | `Name_defi of (
-        pat_name
-      * [
-            `Name_name_choice_auto_semi of (namespace_name * semicolon)
-          | `Opt_name_name_comp_stmt of (
-                namespace_name option
-              * compound_statement
-            )
-        ]
-    )
-  | `Name_use_decl of (
-        pat_use
-      * anon_choice_pat_func_6731ab8 option
-      * [
-            `Name_use_clause_rep_COMMA_name_use_clause of (
-                namespace_use_clause
-              * (Token.t (* "," *) * namespace_use_clause)
-                  list (* zero or more *)
-            )
-          | `Opt_BSLASH_name_name_BSLASH_name_use_group of (
-                Token.t (* "\\" *) option
-              * namespace_name
-              * Token.t (* "\\" *)
-              * namespace_use_group
-            )
-        ]
-      * semicolon
-    )
-  | `Global_decl of (
-        pat_global
-      * variable_name_
-      * (Token.t (* "," *) * variable_name_) list (* zero or more *)
-      * semicolon
-    )
-  | `Func_static_decl of (
-        static_modifier
-      * static_variable_declaration
-      * (Token.t (* "," *) * static_variable_declaration)
-          list (* zero or more *)
-      * semicolon
-    )
+    `Choice_empty_stmt of [
+        `Empty_stmt of Token.t (* ";" *)
+      | `Comp_stmt of compound_statement
+      | `Named_label_stmt of named_label_statement
+      | `Exp_stmt of expression_statement
+      | `If_stmt of if_statement
+      | `Switch_stmt of switch_statement
+      | `While_stmt of while_statement
+      | `Do_stmt of do_statement
+      | `For_stmt of for_statement
+      | `Fore_stmt of foreach_statement
+      | `Goto_stmt of goto_statement
+      | `Cont_stmt of continue_statement
+      | `Brk_stmt of break_statement
+      | `Ret_stmt of return_statement
+      | `Try_stmt of try_statement
+      | `Decl_stmt of declare_statement
+      | `Echo_stmt of echo_statement
+      | `Unset_stmt of unset_statement
+      | `Const_decl of const_declaration
+      | `Func_defi of function_definition
+      | `Class_decl of class_declaration
+      | `Inte_decl of interface_declaration
+      | `Trait_decl of trait_declaration
+      | `Enum_decl of enum_declaration
+      | `Name_defi of namespace_definition
+      | `Name_use_decl of namespace_use_declaration
+      | `Global_decl of global_declaration
+      | `Func_static_decl of function_static_declaration
+    ]
+  | `Semg_ellips of Token.t (* "..." *)
 ]
 
 and static_variable_declaration = (
@@ -1124,6 +1201,19 @@ and switch_block = [
     )
 ]
 
+and switch_statement = (pat_switch * parenthesized_expression * switch_block)
+
+and trait_declaration = (
+    pat_trait * semgrep_extended_name * declaration_list
+)
+
+and try_statement = (
+    pat_try
+  * compound_statement
+  * [ `Catch_clause of catch_clause | `Fina_clause of finally_clause ]
+      list (* one or more *)
+)
+
 and unary_expression = [
     `Clone_exp of clone_expression
   | `Prim_exp of primary_expression
@@ -1146,6 +1236,15 @@ and unary_op_expression = [
       * expression
     )
 ]
+
+and unset_statement = (
+    Token.t (* "unset" *)
+  * Token.t (* "(" *)
+  * variable
+  * (Token.t (* "," *) * variable) list (* zero or more *)
+  * Token.t (* ")" *)
+  * semicolon
+)
 
 and update_expression = [
     `Choice_cast_var_PLUSPLUS of (variable * Token.t (* "++" *))
@@ -1204,12 +1303,34 @@ and variable_name_ = [
 
 and variadic_unpacking = (Token.t (* "..." *) * expression)
 
+and while_statement = (
+    pat_while
+  * parenthesized_expression
+  * [
+        `Choice_choice_empty_stmt of statement
+      | `Colon_blk_pat_endw_choice_auto_semi of (
+            colon_block * pat_endw * semicolon
+        )
+    ]
+)
+
+and yield_expression = (
+    Token.t (* "yield" *)
+  * [
+        `Array_elem_init of array_element_initializer
+      | `From_exp of (Token.t (* "from" *) * expression)
+    ]
+      option
+)
+
 type program = (
     text option
   * (php_tag (*tok*) * statement list (* zero or more *)) option
 )
 
 type empty_statement (* inlined *) = Token.t (* ";" *)
+
+type semgrep_ellipsis (* inlined *) = Token.t (* "..." *)
 
 type comment (* inlined *) = Token.t
 
@@ -1219,30 +1340,9 @@ type text_interpolation (* inlined *) = (
   * [ `Php_tag of php_tag (*tok*) | `Eof of eof (*tok*) ]
 )
 
-type goto_statement (* inlined *) = (pat_goto * name (*tok*) * semicolon)
-
 type optional_type (* inlined *) = (
     Token.t (* "?" *)
   * [ `Named_type of named_type | `Prim_type of primitive_type ]
-)
-
-type namespace_use_declaration (* inlined *) = (
-    pat_use
-  * anon_choice_pat_func_6731ab8 option
-  * [
-        `Name_use_clause_rep_COMMA_name_use_clause of (
-            namespace_use_clause
-          * (Token.t (* "," *) * namespace_use_clause)
-              list (* zero or more *)
-        )
-      | `Opt_BSLASH_name_name_BSLASH_name_use_group of (
-            Token.t (* "\\" *) option
-          * namespace_name
-          * Token.t (* "\\" *)
-          * namespace_use_group
-        )
-    ]
-  * semicolon
 )
 
 type anonymous_function_creation_expression (* inlined *) = (
@@ -1265,39 +1365,6 @@ type arrow_function (* inlined *) = (
   * expression
 )
 
-type assignment_expression (* inlined *) = (
-    [ `Choice_cast_var of variable | `List_lit of list_literal ]
-  * Token.t (* "=" *)
-  * Token.t (* "&" *) option
-  * expression
-)
-
-type augmented_assignment_expression (* inlined *) = (
-    variable
-  * [
-        `STARSTAREQ of Token.t (* "**=" *)
-      | `STAREQ of Token.t (* "*=" *)
-      | `SLASHEQ of Token.t (* "/=" *)
-      | `PERCEQ of Token.t (* "%=" *)
-      | `PLUSEQ of Token.t (* "+=" *)
-      | `DASHEQ of Token.t (* "-=" *)
-      | `DOTEQ of Token.t (* ".=" *)
-      | `LTLTEQ of Token.t (* "<<=" *)
-      | `GTGTEQ of Token.t (* ">>=" *)
-      | `AMPEQ of Token.t (* "&=" *)
-      | `HATEQ of Token.t (* "^=" *)
-      | `BAREQ of Token.t (* "|=" *)
-      | `QMARKQMARKEQ of Token.t (* "??=" *)
-    ]
-  * expression
-)
-
-type break_statement (* inlined *) = (
-    pat_brk
-  * expression option
-  * semicolon
-)
-
 type case_statement (* inlined *) = (
     pat_case
   * expression
@@ -1313,125 +1380,10 @@ type cast_variable (* inlined *) = (
     Token.t (* "(" *) * cast_type * Token.t (* ")" *) * variable
 )
 
-type class_const_declaration (* inlined *) = (
-    attribute_list option
-  * final_modifier option
-  * const_declaration
-)
-
-type class_declaration (* inlined *) = (
-    attribute_list option
-  * [ `Final_modi of final_modifier | `Abst_modi of abstract_modifier ]
-      option
-  * pat_class
-  * name (*tok*)
-  * base_clause option
-  * class_interface_clause option
-  * declaration_list
-  * semicolon option
-)
-
-type conditional_expression (* inlined *) = (
-    expression
-  * Token.t (* "?" *)
-  * expression option
-  * Token.t (* ":" *)
-  * expression
-)
-
-type continue_statement (* inlined *) = (
-    pat_cont
-  * expression option
-  * semicolon
-)
-
-type declare_statement (* inlined *) = (
-    Token.t (* "declare" *)
-  * Token.t (* "(" *)
-  * declare_directive
-  * Token.t (* ")" *)
-  * [
-        `Choice_empty_stmt of statement
-      | `COLON_rep_choice_empty_stmt_pat_endd_choice_auto_semi of (
-            Token.t (* ":" *)
-          * statement list (* zero or more *)
-          * pat_endd
-          * semicolon
-        )
-      | `Choice_auto_semi of semicolon
-    ]
-)
-
 type default_statement (* inlined *) = (
     pat_defa
   * anon_choice_COLON_5102e09
   * statement list (* zero or more *)
-)
-
-type do_statement (* inlined *) = (
-    pat_do * statement * pat_while * parenthesized_expression * semicolon
-)
-
-type echo_statement (* inlined *) = (pat_echo * expressions * semicolon)
-
-type enum_case (* inlined *) = (
-    attribute_list option
-  * Token.t (* "case" *)
-  * name (*tok*)
-  * (
-        Token.t (* "=" *)
-      * [ `Str of string_ (*tok*) | `Int of integer (*tok*) ]
-    )
-      option
-  * semicolon
-)
-
-type enum_declaration (* inlined *) = (
-    attribute_list option
-  * pat_enum
-  * name (*tok*)
-  * return_type option
-  * class_interface_clause option
-  * enum_declaration_list
-)
-
-type expression_statement (* inlined *) = (expression * semicolon)
-
-type for_statement (* inlined *) = (
-    pat_for
-  * Token.t (* "(" *)
-  * expressions option
-  * Token.t (* ";" *)
-  * expressions option
-  * Token.t (* ";" *)
-  * expressions option
-  * Token.t (* ")" *)
-  * [
-        `Choice_auto_semi of semicolon
-      | `Choice_empty_stmt of statement
-      | `COLON_rep_choice_empty_stmt_pat_endfor_choice_auto_semi of (
-            Token.t (* ":" *)
-          * statement list (* zero or more *)
-          * pat_endfor
-          * semicolon
-        )
-    ]
-)
-
-type foreach_statement (* inlined *) = (
-    pat_fore
-  * Token.t (* "(" *)
-  * expression
-  * pat_as
-  * [ `Fore_pair of foreach_pair | `Choice_opt_AMP_exp of foreach_value ]
-  * Token.t (* ")" *)
-  * [
-        `Choice_auto_semi of semicolon
-      | `Choice_empty_stmt of statement
-      | `Colon_blk_pat_endf_choice_auto_semi of (
-            colon_block * pat_endf * semicolon
-        )
-    ]
 )
 
 type function_call_expression (* inlined *) = (
@@ -1444,56 +1396,6 @@ type function_call_expression (* inlined *) = (
   * arguments
 )
 
-type function_definition (* inlined *) = (
-    attribute_list option
-  * function_definition_header
-  * compound_statement
-)
-
-type function_static_declaration (* inlined *) = (
-    static_modifier
-  * static_variable_declaration
-  * (Token.t (* "," *) * static_variable_declaration) list (* zero or more *)
-  * semicolon
-)
-
-type global_declaration (* inlined *) = (
-    pat_global
-  * variable_name_
-  * (Token.t (* "," *) * variable_name_) list (* zero or more *)
-  * semicolon
-)
-
-type if_statement (* inlined *) = (
-    pat_if
-  * parenthesized_expression
-  * [
-        `Choice_empty_stmt_rep_else_if_clause_opt_else_clause of (
-            statement
-          * else_if_clause list (* zero or more *)
-          * else_clause option
-        )
-      | `Colon_blk_rep_else_if_clause_2_opt_else_clause_2_pat_endif_choice_auto_semi of (
-            colon_block
-          * else_if_clause_2 list (* zero or more *)
-          * else_clause_2 option
-          * pat_endif
-          * semicolon
-        )
-    ]
-)
-
-type include_expression (* inlined *) = (pat_incl * expression)
-
-type include_once_expression (* inlined *) = (pat_incl_once * expression)
-
-type interface_declaration (* inlined *) = (
-    pat_inte
-  * name (*tok*)
-  * base_clause option
-  * declaration_list
-)
-
 type match_conditional_expression (* inlined *) = (
     match_condition_list * Token.t (* "=>" *) * expression
 )
@@ -1502,23 +1404,8 @@ type match_default_expression (* inlined *) = (
     pat_defa * Token.t (* "=>" *) * expression
 )
 
-type match_expression (* inlined *) = (
-    pat_match * parenthesized_expression * match_block
-)
-
 type member_call_expression (* inlined *) = (
     dereferencable_expression * Token.t (* "->" *) * member_name * arguments
-)
-
-type namespace_definition (* inlined *) = (
-    pat_name
-  * [
-        `Name_name_choice_auto_semi of (namespace_name * semicolon)
-      | `Opt_name_name_comp_stmt of (
-            namespace_name option
-          * compound_statement
-        )
-    ]
 )
 
 type nullsafe_member_call_expression (* inlined *) = (
@@ -1527,15 +1414,6 @@ type nullsafe_member_call_expression (* inlined *) = (
 
 type print_intrinsic (* inlined *) = (Token.t (* "print" *) * expression)
 
-type property_declaration (* inlined *) = (
-    attribute_list option
-  * modifier list (* one or more *)
-  * type_ option
-  * property_element
-  * (Token.t (* "," *) * property_element) list (* zero or more *)
-  * semicolon
-)
-
 type property_promotion_parameter (* inlined *) = (
     visibility_modifier
   * type_ option
@@ -1543,18 +1421,12 @@ type property_promotion_parameter (* inlined *) = (
   * property_initializer option
 )
 
-type require_expression (* inlined *) = (pat_requ * expression)
-
-type require_once_expression (* inlined *) = (pat_requ_once * expression)
-
-type return_statement (* inlined *) = (
-    pat_ret
-  * expression option
-  * semicolon
-)
-
 type scoped_call_expression (* inlined *) = (
     scope_resolution_qualifier * Token.t (* "::" *) * member_name * arguments
+)
+
+type semgrep_deep_ellipsis (* inlined *) = (
+    Token.t (* "<..." *) * expression * Token.t (* "...>" *)
 )
 
 type simple_parameter (* inlined *) = (
@@ -1565,31 +1437,7 @@ type simple_parameter (* inlined *) = (
   * property_initializer option
 )
 
-type switch_statement (* inlined *) = (
-    pat_switch * parenthesized_expression * switch_block
-)
-
 type throw_expression (* inlined *) = (pat_throw * expression)
-
-type trait_declaration (* inlined *) = (
-    pat_trait * name (*tok*) * declaration_list
-)
-
-type try_statement (* inlined *) = (
-    pat_try
-  * compound_statement
-  * [ `Catch_clause of catch_clause | `Fina_clause of finally_clause ]
-      list (* one or more *)
-)
-
-type unset_statement (* inlined *) = (
-    Token.t (* "unset" *)
-  * Token.t (* "(" *)
-  * variable
-  * (Token.t (* "," *) * variable) list (* zero or more *)
-  * Token.t (* ")" *)
-  * semicolon
-)
 
 type variadic_parameter (* inlined *) = (
     attribute_list option
@@ -1597,26 +1445,6 @@ type variadic_parameter (* inlined *) = (
   * Token.t (* "&" *) option
   * Token.t (* "..." *)
   * variable_name
-)
-
-type while_statement (* inlined *) = (
-    pat_while
-  * parenthesized_expression
-  * [
-        `Choice_empty_stmt of statement
-      | `Colon_blk_pat_endw_choice_auto_semi of (
-            colon_block * pat_endw * semicolon
-        )
-    ]
-)
-
-type yield_expression (* inlined *) = (
-    Token.t (* "yield" *)
-  * [
-        `Array_elem_init of array_element_initializer
-      | `From_exp of (Token.t (* "from" *) * expression)
-    ]
-      option
 )
 
 type extra = [
