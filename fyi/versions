@@ -30,9 +30,9 @@ Last change in file:
 ---
 File: semgrep-grammars/src/semgrep-php/php/grammar.js
 Git repo name: otss
-Latest commit in repo: 7662e75972a83ff1f3ed15e41945dfe87cbf3579
+Latest commit in repo: 5bb6cd7ebdd490a82345fee3b5e1962faa183834
 Last change in file:
-  commit 7662e75972a83ff1f3ed15e41945dfe87cbf3579
+  commit 5bb6cd7ebdd490a82345fee3b5e1962faa183834
   Author: Cooper Pierce <cooper@semgrep.com>
   Date:   Thu Feb 5 11:47:36 2026 -0500
   
